@@ -1,0 +1,4 @@
+<div class="mySlides fade">
+  <p lang="en" style="color: red" >English</p>
+  <p lang="fr" style="color: red" >France</p>
+</div>

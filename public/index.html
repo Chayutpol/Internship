@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="./src/d3.v2.min.js" type="application/javascript"></script>
+  <script src="./src/timeknots.js" type="application/javascript"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title> Herione of France </title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <!-- title section -->
+  <div class="bg-head" >
+    <div class="head">
+      <form class="lang-switch">
+          <label for="lang-switch">
+              <span lang="fr">Langue</span>
+              <span lang="en">Language</span>
+          </label>
+          <select id="lang-switch">
+              <option value="en" selected>English</option>
+              <option value="fr">France</option>
+          </select>
+      </form>
+      <div class="content">
+        <h1 class="title">Great female in France</h1>
+        <h5 class="description">Timeline that show great female history</h5>
+      </div>
+      <button onclick="scrollDown()" id="down-button" >
+        <img src="./img/down.png" />
+      </button>
+    </div>
+  </div>
+  <!-- End of title section -->
+
+
+  <div class="bg">
+    <div class="bg-cover">
+      <div id="wrapper" class="wrapper" >
+        <div id="timeline2" class="center-line" style="z-index: 99"></div>
+
+        <!-- odd row template -->
+        <div class="row row-1" >
+          <section >
+            <div class="details">
+              <span class="title" >Prehistorical Era</span>
+              <span></span>
+            </div>
+            <div class="content slideshow-container" id='Prehistorical'>
+              <a class="prev" onclick="plusSlides(0,-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(0,1)">&#10095;</a>
+            </div>
+            <div style="text-align:center">
+              <span class="dot" onclick="currentSlide(0,1)"></span>
+              <span class="dot" onclick="currentSlide(0,2)"></span>
+              <span class="dot" onclick="currentSlide(0,3)"></span>
+            </div>
+            <div class="bottom">
+              <a href="https://www.franceculture.fr/histoire/non-les-femmes-prehistoriques-ne-balayaient-pas-la-grotte" target="_blank">Read more</a>
+            </div>
+          </section>
+          <!-- image container -->
+          <div class="img-container">
+            <figure class="items">
+              <img alt="Prehistoric" src="./img/1Prehistoric/Prehistoric.jpg" />
+              <p>Prehistoric</p>
+            </figure>
+            <figure class="items">
+              <img alt="mères et chasseuses et cheffes" src="./img/1Prehistoric/mères et chasseuses et cheffes.jpg" />
+              <p>mères et chasseuses et cheffes</p>
+            </figure>
+          </div>
+        </div>
+        <!-- end of odd row template -->
+
+        <!-- even row template -->
+        <div class="row row-2">
+          <div class="img-container">
+            <figure class="items">
+              <img alt="Peseshet" src="./img/2Antiquity/Peseshet.jpg" />
+              <p>Peseshet</p>
+            </figure>
+            <figure class="items">
+              <img alt="Sappho" src="./img/2Antiquity/sappho.jpg" />
+              <p>Sappho</p>
+            </figure>
+            <figure class="items">
+              <img alt="Hypathie" src="./img/2Antiquity/Hypathie.jpg" />
+              <p>Hypathie</p>
+            </figure>
+            <figure class="items">
+              <img alt="Femme sportives Sicile" src="./img/2Antiquity/Femme sportives Sicile.jpg" />
+              <p>Femme sportives Sicile</p>
+            </figure>
+            <figure class="items">
+              <img alt="Femmes sportives grecques" src="./img/2Antiquity/Femmes sportives grecques.jpg" />
+              <p>Femmes sportives grecques</p>
+            </figure>
+          </div>
+          <section>
+            <div class="details">
+              <span class="title">Antiquity</span>
+              <span>~1AD</span>
+            </div>
+            <div class="content" id="Antiquity"> This is the main content of the paragraph</div>
+            <div class="ifr-container">
+              <iframe class="resp-iframe" src="https://www.youtube.com/embed/DV_edg69lRU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="bottom">
+              <a href="https://youtu.be/DV_edg69lRU" target="_blank">Read more</a>
+            </div>
+          </section>
+        </div>
+        <!-- end of even row template -->
+
+        <div class="row row-1">
+          <section>
+            <div class="details">
+              <span class="title">Middle-Age</span>
+              <span>~5th Century</span>
+            </div>
+            <div class="content" id='Middle-Age'> This is the main content of the paragraph</div>
+            <div class="ifr-container">
+              <iframe class="resp-iframe" src="https://www.youtube.com/embed/01FvYaBJdBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="bottom">
+              <a href="https://youtu.be/01FvYaBJdBs" target="_blank">Read more</a>
+            </div>
+          </section>
+          <!-- image container -->
+          <div class="img-container">
+            <figure class="items">
+              <img alt="Modern age"src="./img/3Middle Age/Modern-age.jpg" />
+              <p>Modern Age</p>
+            </figure>
+            <figure class="items">
+              <img alt="Christine-de-Pisan" src="./img/3Middle Age/Christine-de-Pisan.jpg" />
+              <p>Christine de Pisan</p>
+            </figure>
+            <figure class="items">
+              <img alt="Femmes chevaleresses" src="./img/3Middle Age/Femmes-chevaleresses.jpg" />
+              <p>Femmes Chevaleresses</p>
+            </figure>
+            <figure class="items">
+              <img alt="Aliénor d’aquitaine" src="./img/3Middle Age/Aliénor d’aquitaine.jpg" />
+              <p>Aliénor d’aquitaine</p>
+            </figure>
+          </div>
+        </div>
+
+
+        <div class="row row-2">
+          <div class="img-container">
+            <figure class="items">
+              <img alt="Emilie du châtelet"src="./img/4Renaissance/Emilie du châtelet.jpg" />
+              <p>Emilie du châtelet</p>
+            </figure>
+            <figure class="items">
+              <img alt="Artemesia Gentilesche"src="./img/4Renaissance/Artemesia Gentilesche.jpg" />
+              <p>Artemesia Gentilesche</p>
+            </figure>
+            <figure class="items">
+              <img alt="Maria-Anna Mozart"src="./img/4Renaissance/Maria-Anna Mozart.jpg" />
+              <p>Maria-Anna Mozart</p>
+            </figure>
+            <figure class="items">
+              <img alt="Catherine de medicis"src="./img/4Renaissance/Catherine de medicis.jpg" />
+              <p>Catherine de medicis</p>
+            </figure>
+            <figure class="items">
+              <img alt="Reine Margot"src="./img/4Renaissance/Reine Margot.jpg" />
+              <p>Reine Margot</p>
+            </figure>
+            <figure class="items">
+              <img alt="Louise Depinay"src="./img/4Renaissance/Louise Depinay.jpg" />
+              <p>Louise Depinay</p>
+            </figure>
+          </div>
+          <section>
+            <div class="details">
+              <span class="title">Renaissance</span>
+              <span>1st Jan</span>
+            </div>
+            <div class="content" id='Renaissance'> This is the main content of the paragraph</div>
+            <div class="bottom">
+              <a href="#">Read more</a>
+            </div>
+          </section>
+        </div>
+
+
+        <div class="row row-1">
+          <section>
+            <div class="details">
+              <span class="title">French Revolution</span>
+              <span>1st Jan</span>
+            </div>
+            <div class="content" id='French-Revolution'> This is the main content of the paragraph</div>
+            <div class="bottom">
+              <a href="#">Read more</a>
+            </div>
+          </section>
+          <div class="img-container">
+            <figure class="items">
+              <img alt="Olympe de Gouge" src="./img/5French Revolution/Olympe de Gouge.jpg" />
+              <p>Olympe de Gougey</p>
+            </figure>
+            <figure class="items">
+              <img alt="Louise de Kéralio" src="./img/5French Revolution/Louise de Kéralio.jpg" />
+              <p>Louise de Kéralio</p>
+            </figure>
+            <figure class="items">
+              <img alt="Anne Théroigne de Méricourt" src="./img/5French Revolution/Anne Théroigne de Méricourt.jpg" />
+              <p>Anne Théroigne de Méricourt</p>
+            </figure>
+            <figure class="items">
+              <img alt="Femmes à cheval allant à versailles" src="./img/5French Revolution/Femmes à cheval allant à versailles.jpg" />
+              <p>Femmes à cheval allant à versailles</p>
+            </figure>
+            <figure class="items">
+              <img alt="Déclaration des droits de la femme, extrait" src="./img/5French Revolution/Déclaration des droits de la femme, extrait.jpg" />
+              <p>Déclaration des droits de la femme, extrait</p>
+            </figure>
+          </div>
+        </div>
+
+        <div class="row row-2">
+          <div class="img-container">
+
+          </div>
+          <section>
+            <div class="details">
+              <span class="title">Modern Period</span>
+              <span>19th Century</span>
+            </div>
+            <div class="content" id='Modern19th'> This is the main content of the paragraph</div>
+            <div class="bottom">
+              <a href="https://www.franceculture.fr/numerique/ada-lovelace-la-premiere-codeuse-de-lhistoire" target="_blank">Read more</a>
+            </div>
+          </section>
+        </div>
+
+        <div class="row row-1">
+          <section>
+            <div class="details">
+              <span class="title">Modern Period</span>
+              <span>20th Century</span>
+            </div>
+            <div class="content" id='Modern20th'> This is the main content of the paragraph</div>
+            <div class="bottom">
+              <a href="#">Read more</a>
+            </div>
+          </section>
+          <div class="img-container">
+
+          </div>
+        </div>
+        <div class="row row-2">
+          <div class="img-container">
+
+          </div>
+          <section>
+            <div class="details">
+              <span class="title">Contemporarian</span>
+              <span>21st Century</span>
+            </div>
+            <p>This is the main content of the paragraph</p>
+            <div class="bottom">
+              <a href="#">Read more</a>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<button onclick="topFunction()" id="up-button">
+  <img src="./img/arrow.png" />
+</button>
+<script type="text/javascript" src="index.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>

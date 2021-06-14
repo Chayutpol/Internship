@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+*{
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-size: 12px;
+  color: black;
+  z-index: 1;
+}
+form.lang-switch{
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+  background: rgba(0,0,0,0);
+}
+#lang-switch{
+  background: rgba(0,0,0,0.2);
+  color: white;
+  font-size: 1em;
+}
+option{
+  background: rgba(0,0,0,0.3);
+  font-size: 1em;
+}
+#up-button{
+  display: none;
+
+}
+#up-button img{
+  position: fixed;
+  opacity: 0.7;
+  width: 50px;
+  bottom: 20px;
+  right: 30px;
+  border-radius: 50px;
+  z-index: 99;
+}
+#down-button{
+  z-index: 99;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  padding: 0px;
+  background-color: rgba(255,255,255,0);
+  border-radius: 90px;
+}
+#down-button img{
+  width: 100%;
+  opacity: 0.7;
+}
+
+.bg-head{
+  width: 100%;
+  background-image: url('./img/head-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.head{
+  color: white;
+  height: 100vh;
+  background: rgba(81,181,207, .3);
+  width: 100%;
+}
+.head .content{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+h1.title{
+  font-size: 4em;
+  font-weight: 600;
+}
+h5.description{
+  font-size: 2em;
+  font-weight: 200;
+}
+.bg{
+  background-image: url('./img/body-bg.jpg');
+  background-size: contain;
+  background-repeat: repeat;
+}
+.bg-cover{
+  height: 100%;
+  background: rgba(120,205,215, 0.2);
+  margin: 0 auto;
+  padding: 2em 0;
+}
+/* image gallery */
+.bg-cover .img-container{
+  margin: 20px 0;
+  width: calc(50% - 60px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.img-container img{
+  max-height: 200px;
+  max-width: 100%;
+}
+/* .img-container iframe{
+  width: calc(200%);
+  margin: 0 auto;
+} */
+.img-container .items p{
+  text-align: center;
+  color: white;
+  font-size: 1em;
+  font-weight: 600;
+  background-color: rgba(120, 120, 120, 0.5);
+  max-width: 100%;
+}
+/* content */
+.wrapper{
+  width: 100%;
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 0 1em;
+  z-index: 1;
+}
+.wrapper .row{
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .row-1{
+  justify-content: space-between;
+}
+.wrapper .row-2{
+  justify-content: space-between;
+}
+.center-line{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.wrapper .row section{
+  background: rgba(255,255,255, 0.7);
+  border-radius: 15px;
+  width: calc(50% - 5em);
+  padding: 2em;
+  position: relative;
+  z-index: 2;
+}
+.row section .details{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.row section .bottom{
+  margin-top: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.row section .details .title{
+  font-size: 2em;
+  font-weight: 600;
+}
+.row section .content{
+  /* margin: 1em 0 4em 0; */
+  font-size: 1.5em;
+}
+
+.row section .bottom a
+{
+  position: absolute;
+  text-decoration: none;
+  background: #45add7;
+  color: white;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 1em;
+  font-weight: 500;
+  bottom: 2em;
+}
+.ifr-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 4em;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.resp-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Slide show style */
+.slideshow-container {
+  min-height: 100px;
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+  margin: 0 1.8em 0 1.8em;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 0.5em;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* Caption text */
+.text {
+  color: #000;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@media(max-width: 772px)
+{
+  body{
+    font-size: 8px;
+  }
+  .wrapper .center-line{
+    left: 3em;
+  }
+  .wrapper .row{
+    margin: 2em 0 0.25em 4em;
+  }
+  .wrapper .row section{
+    width: 100%;
+  }
+  .bg-cover .img-container{
+    display: none;
+  }
+  #up-button img{
+    width: 3em;
+  }
+  #down-button{
+    width: 90px;
+  }
+}
