@@ -195,7 +195,6 @@ h5.description{
   position: relative;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 4em;
   padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 }
 
@@ -222,7 +221,7 @@ h5.description{
 /* Hide the images by default */
 .mySlides {
   display: none;
-  margin: 0 1.8em 0 1.8em;
+  margin: 0 1.8em 1em 1.8em;
 }
 
 /* Next & previous buttons */
