@@ -21,7 +21,7 @@ var era_name= [
 ];
 var slideIndex = 1;
 for(let i in era_name) {
-  var path = '/content/'+ era_name[i]+'.txt';
+  var path = './content/'+ era_name[i]+'.txt';
 
   $.get(path, function(data) {
        $('#' + era_name[i]).append(data);
@@ -37,8 +37,10 @@ window.onload = function() {
   TimeKnots.draw("#timeline2", mySchedule, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:100  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
 
   // slider
-  showSlides(0, slideIndex);
-
+  var len = document.getElementsByClassName('slideshow-container').length;
+  console.log(len);
+  for(var j = 0; j < len ; j++)
+    showSlides(j, slideIndex);
 };
 $(window).resize(function() {
   elem = document.getElementById("wrapper");
@@ -106,7 +108,8 @@ function currentSlide(a, n) {
 function showSlides(a, n) {
   var i;
   var slides = document.getElementById(era_name[a]).getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var dots = document.getElementById(era_name[a]+"-dot").getElementsByClassName("dot");
+  console.log(dots.length);
   console.log(slides.length);
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}

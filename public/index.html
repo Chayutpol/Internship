@@ -52,7 +52,7 @@
               <a class="prev" onclick="plusSlides(0,-1)">&#10094;</a>
               <a class="next" onclick="plusSlides(0,1)">&#10095;</a>
             </div>
-            <div style="text-align:center">
+            <div style="text-align:center" id='Prehistorical-dot'>
               <span class="dot" onclick="currentSlide(0,1)"></span>
               <span class="dot" onclick="currentSlide(0,2)"></span>
               <span class="dot" onclick="currentSlide(0,3)"></span>
@@ -104,7 +104,15 @@
               <span class="title">Antiquity</span>
               <span>~1AD</span>
             </div>
-            <div class="content" id="Antiquity"> This is the main content of the paragraph</div>
+            <div class="content slideshow-container" id='Antiquity'>
+              <a class="prev" onclick="plusSlides(1,-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1,1)">&#10095;</a>
+            </div>
+            <div style="text-align:center" id="Antiquity-dot">
+              <span class="dot" onclick="currentSlide(1,1)"></span>
+              <span class="dot" onclick="currentSlide(1,2)"></span>
+              <span class="dot" onclick="currentSlide(1,3)"></span>
+            </div>
             <div class="ifr-container">
               <iframe class="resp-iframe" src="https://www.youtube.com/embed/DV_edg69lRU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
