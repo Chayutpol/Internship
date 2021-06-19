@@ -1,12 +1,13 @@
 
 var mySchedule = [
-  {"value": -1, "name":"Prehistorical" },
+  {"value": -1000, "name":"Prehistorical" },
   {"value": 100, "name":"Ancient"},
   {"value": 500, "name":"Middle Age"},
   {"value": 1500, "name":"Renaissance"},
+  {"value": 1789, "name":"French Revolution"},
   {"value":	1800, "name":"Modern 19th Century"},
   {"value":	1900, "name":"Modern 20th Century"},
-  {"value":	2000,"name":"Contemporarian"},
+  {"value":	2000,"name":"Contemporian"},
   {"value": 2100, "name":""}
 ];
 var elem = document.getElementById("wrapper");
@@ -17,14 +18,40 @@ var era_name= [
   'Renaissance',
   'French-Revolution',
   'Modern19th',
-  'Modern20th'
+  'Modern20th',
+  'Contemporian'
 ];
-var slideIndex = 1;
+var slideIndex = new Array();
+for(let i in era_name)
+{
+  slideIndex.push(1);
+}
 for(let i in era_name) {
   var path = './content/'+ era_name[i]+'.txt';
+  var folder = "img/" + (parseInt(i)+1) + era_name[i] + '/';
 
+  $.ajax({
+      url : folder,
+      success: function (data) {
+          $(data).find("a").attr("href", function (j, val) {
+              if( val.match(/\.(jpe?g|png|gif)$/) ) {
+                  var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
+                  $('#' + era_name[i] + '-img').append("<figure class=\"items\"><img src='" + val +"'><p>"+ name +"</p></figure>" );
+              }
+          });
+      }
+  });
   $.get(path, function(data) {
        $('#' + era_name[i]).append(data);
+       $('#' + era_name[i]).append("<a class=\"prev\" >&#10094;</a>");
+       $('#' + era_name[i]).append("<a class=\"next\" >&#10095;</a>");
+       $('#' + era_name[i] + ' a.prev').attr("onclick", "plusSlides(" + i + ", -1)");
+       $('#' + era_name[i] + ' a.next').attr("onclick", "plusSlides(" + i + ", 1)");
+       for(let j = 0 ; j < $('#' + era_name[i] + " .mySlides").length; j++){
+         $('#' + era_name[i] + '-dot').append(
+           "<span class=\"dot\" onclick=\"currentSlide(" + i + ',' + j +")\"></span>"
+         );
+       }
        $('[lang]').hide(); // hide all lang attributes on start.
        $('[lang="en"]').show();
        //console.log(typeof data);
@@ -38,9 +65,8 @@ window.onload = function() {
 
   // slider
   var len = document.getElementsByClassName('slideshow-container').length;
-  console.log(len);
   for(var j = 0; j < len ; j++)
-    showSlides(j, slideIndex);
+    showSlides(j, slideIndex[j]);
 };
 $(window).resize(function() {
   elem = document.getElementById("wrapper");
@@ -96,29 +122,27 @@ $('#lang-switch').change(function () { // put onchange event when user select op
 
 // Next/previous controls
 function plusSlides(a, n) {
-  showSlides(a, slideIndex += n);
-  console.log(a, slideIndex);
+  showSlides(a, slideIndex[a] += n);
+  console.log(a, slideIndex[a]);
 }
 
 // Thumbnail image controls
 function currentSlide(a, n) {
-  showSlides(a, slideIndex = n);
+  showSlides(a, slideIndex[a] = n);
 }
 
 function showSlides(a, n) {
   var i;
   var slides = document.getElementById(era_name[a]).getElementsByClassName("mySlides");
   var dots = document.getElementById(era_name[a]+"-dot").getElementsByClassName("dot");
-  console.log(dots.length);
-  console.log(slides.length);
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
+  if (n > slides.length) {slideIndex[a] = 1}
+  if (n < 1) {slideIndex[a] = slides.length}
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+  slides[slideIndex[a]-1].style.display = "block";
+  dots[slideIndex[a]-1].className += " active";
 }

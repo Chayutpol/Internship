@@ -1,2 +1,12 @@
-<p lang="en" style="color: red" >English</p>
-<p lang="fr" style="color: red" >France</p>
+<div class="mySlides fade">
+  <h5 lang="en" style="color: red" >English1</p>
+  <h5 lang="fr" style="color: red" >France1</p>
+</div>
+<div class="mySlides fade">
+  <h5 lang="en" style="color: red" >English2</p>
+  <h5 lang="fr" style="color: red" >France2</p>
+</div>
+<div class="mySlides fade">
+  <h5 lang="en" style="color: red" >English3</p>
+  <h5 lang="fr" style="color: red" >France3</p>
+</div>
