@@ -68,6 +68,7 @@ for(let i in era_name) {
        }
        $('[lang]').hide(); // hide all lang attributes on start.
        $('[lang="en"]').show();
+       showSlides(i, slideIndex[i]);
        //console.log(typeof data);
   }, 'text');
   for(j in fileNames[i])
@@ -139,7 +140,9 @@ function unzoom(x){
   x.style.zIndex = "0";
 }
 
-
+elem = document.getElementById("wrapper");
+$("#timeline2").empty();
+TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
 $('[lang]').hide(); // hide all lang attributes on start.
 $('[lang="en"]').show(); // show just Korean text (you can change it)
 $('#lang-switch').change(function () { // put onchange event when user select option from select
