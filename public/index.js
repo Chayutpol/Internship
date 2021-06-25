@@ -21,21 +21,40 @@ var era_name= [
   'Modern20th',
   'Contemporian'
 ];
+var fileNames = [
+  // Prehistorical
+  ['mères et chasseuses et cheffes.jpg', 'Prehistoric.jpg'],
+  //Antiquity
+  ['Femme sportives Sicile.jpg', 'Femmes sportives grecques.jpg','Hypathie.jpg','Peseshet.jpg', 'sappho.jpg'],
+  //Middle-Age
+  ['Aliénor d’aquitaine.jpg', 'Christine-de-Pisan.jpg', 'Femmes-chevaleresses.jpg', 'Modern-age.jpg'],
+  //Renaissance
+  ['Artemesia Gentilesche.jpg', 'Catherine de medicis.jpg', 'Emilie du châtelet.jpg', 'Louise Depinay.jpg', 'Maria-Anna Mozart.jpg', 'Reine Margot.jpg'],
+  //French-Revolution
+  ['Anne Théroigne de Méricourt.jpg', 'Déclaration des droits de la femme, extrait.jpg', 'Femmes à cheval allant à versailles.jpg', 'Louise de Kéralio.jpg', 'Olympe de Gouge.jpg'],
+  //Modern19th
+  [''],
+  //Modern20th
+  [''],
+  //Contemporian
+  ['']
+
+];
 for(let i in era_name) {
   var path = './content/'+ era_name[i]+'.txt';
   var folder = "./img/" + (parseInt(i)+1) + era_name[i] + '/';
 
-  $.ajax({
-      url : folder,
-      success: function (data) {
-          $(data).find("a").attr("href", function (j, val) {
-              if( val.match(/\.(jpe?g|png|gif)$/) ) {
-                  var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
-                  $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><img src='" + val +"' onmouseover=\"zoom(this)\" onmouseout=\"unzoom(this)\"><p>"+ name +"</p></figure>" );
-              }
-          });
-      }
-  });
+  // $.ajax({
+  //     url : folder,
+  //     success: function (data) {
+  //         $(data).find("a").attr("href", function (j, val) {
+  //             if( val.match(/\.(jpe?g|png|gif)$/) ) {
+  //                 var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
+  //                 $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><img src='" + val +"' onmouseover=\"zoom(this)\" onmouseout=\"unzoom(this)\"><p>"+ name +"</p></figure>" );
+  //             }
+  //         });
+  //     }
+  // });
   $.get(path, function(data) {
        $('#' + era_name[i]).append(data);
        $('#' + era_name[i]).append("<a class=\"prev\" >&#10094;</a>");
@@ -51,12 +70,17 @@ for(let i in era_name) {
        $('[lang="en"]').show();
        //console.log(typeof data);
   }, 'text');
+  for(j in fileNames[i])
+  {
+    var val = folder+fileNames[i][j];
+    console.log(val);
+    var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
+    $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><img src='" + val +"' onmouseover=\"zoom(this)\" onmouseout=\"unzoom(this)\"><p>"+ name +"</p></figure>" );
+  }
 }
 var allRow = document.getElementsByClassName("row");
-console.log(allRow);
 for(k = 0; k < allRow.length; k++)
 {
-  console.log(k);
   allRow[k].setAttribute("onmouseover", "highlight(this)");
   allRow[k].setAttribute("onmouseout", "unhighlight(this)");
 }
@@ -139,7 +163,6 @@ $('#lang-switch').change(function () { // put onchange event when user select op
 // Next/previous controls
 function plusSlides(a, n) {
   showSlides(a, slideIndex[a] += n);
-  console.log(a, slideIndex[a]);
 }
 
 // Thumbnail image controls
@@ -159,8 +182,6 @@ function showSlides(a, n) {
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
-  console.log(a);
-  console.log(slides[slideIndex[a]-1]);
   slides[slideIndex[a]-1].style.display = "block";
   dots[slideIndex[a]-1].className += " active";
 }
