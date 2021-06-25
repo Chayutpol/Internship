@@ -1,14 +1,20 @@
 <div class="mySlides fade">
-  <h5 lang="en" style="color: red" >English1</p>
-  <h5 lang="fr" style="color: red" >France1</p>
+  <h5 lang="en" >English1</h5>
+  <p lang="en">This is where the paragraph start and continue on until the paragraph end</p>
+  <h5 lang="fr"  >France1</h5>
+  <p lang="fr">This is where the paragraph start and continue on until the paragraph end</p>
 </div>
 <div class="mySlides fade">
-  <h5 lang="en" style="color: red" >English2</p>
-  <h5 lang="fr" style="color: red" >France2</p>
+  <h5 lang="en"  >English2</h5>
+  <p lang="en">This is where the paragraph start and continue on until the paragraph end</p>
+  <h5 lang="fr"  >France2</h5>
+  <p lang="fr">This is where the paragraph start and continue on until the paragraph end</p>
 </div>
 <div class="mySlides fade">
-  <h5 lang="en" style="color: red" >English3</p>
-  <h5 lang="fr" style="color: red" >France3</p>
+  <h5 lang="en"  >English3</h5>
+  <p lang="en">This is where the paragraph start and continue on until the paragraph end</p>
+  <h5 lang="fr"  >France3</h5>
+  <p lang="fr">This is where the paragraph start and continue on until the paragraph end</p>
 </div>
 <div class="mySlides fade">
   <div class="ifr-container">

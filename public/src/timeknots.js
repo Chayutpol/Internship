@@ -1,4 +1,14 @@
 var TimeKnots = {
+  scroll: function scrollTo(x)
+  {
+    console.log(x);
+    const yOffset = -50;
+    const element = document.getElementById(x);
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+    window.scrollTo({top: y, behavior: 'smooth'});
+
+  },
   draw: function(id, events, options){
     var cfg = {
       width: 600,
@@ -13,7 +23,8 @@ var TimeKnots = {
       labelFormat: "%Y/%m/%d %H:%M:%S",
       addNow: false,
       seriesColor: d3.scale.category20(),
-      dateDimension: true
+      dateDimension: true,
+      link: "#"
     };
 
 
@@ -125,6 +136,7 @@ var TimeKnots = {
     .data(events).enter()
     .append("circle")
     .attr("class", "timeline-event")
+    .attr("onclick", function(d){if(d.link != undefined){return "TimeKnots.scroll(\""+d.link+"\")"} return "scrollTo("+cfg.link+")"})
     .attr("r", function(d){if(d.radius != undefined){return d.radius} return cfg.radius})
     .style("stroke", function(d){
                     if(d.color != undefined){
@@ -218,7 +230,7 @@ var TimeKnots = {
         tipPixelsY = elem.getBoundingClientRect().top+window.pageYOffset;
     return tip.style("top", (d3.event.pageY-tipPixelsY-margin-20)+"px")
               .style("left",(d3.event.pageX-tipPixelsX+margin+20)+"px")
-              .style("z-index","99");})
-    .on("mouseout", function(){return tip.style("opacity", 0).style("top","0px").style("left","0px").style("z-index", "0");});
+              })
+    .on("mouseout", function(){return tip.style("opacity", 0).style("top","0px").style("left","0px")});
   }
 }

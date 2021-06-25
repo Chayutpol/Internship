@@ -1,14 +1,14 @@
 
-var mySchedule = [
-  {"value": -1000, "name":"Prehistorical" },
-  {"value": 100, "name":"Ancient"},
-  {"value": 500, "name":"Middle Age"},
-  {"value": 1500, "name":"Renaissance"},
-  {"value": 1789, "name":"French Revolution"},
-  {"value":	1800, "name":"Modern 19th Century"},
-  {"value":	1900, "name":"Modern 20th Century"},
-  {"value":	2000,"name":"Contemporian"},
-  {"value": 2100, "name":""}
+var timeline = [
+  {"value": -1000, "name":"Prehistorical", "link": "Prehistorical-head" },
+  {"value": 100, "name":"Ancient", "link": "Antiquity-head"},
+  {"value": 500, "name":"Middle Age", "link": "Middle-Age-head"},
+  {"value": 1500, "name":"Renaissance", "link": "Renaissance-head"},
+  {"value": 1789, "name":"French Revolution", "link": "French-Revolution-head"},
+  {"value":	1800, "name":"Modern 19th Century", "link": "Modern19th-head"},
+  {"value":	1900, "name":"Modern 20th Century", "link": "Modern20th-head"},
+  {"value":	2000,"name":"Contemporian", "link": "Contemporian-head"},
+  {"value": 2100, "name":"", "link": "#"}
 ];
 var elem = document.getElementById("wrapper");
 var era_name= [
@@ -21,11 +21,6 @@ var era_name= [
   'Modern20th',
   'Contemporian'
 ];
-var slideIndex = new Array();
-for(let i in era_name)
-{
-  slideIndex.push(1);
-}
 for(let i in era_name) {
   var path = './content/'+ era_name[i]+'.txt';
   var folder = "img/" + (parseInt(i)+1) + era_name[i] + '/';
@@ -36,7 +31,7 @@ for(let i in era_name) {
           $(data).find("a").attr("href", function (j, val) {
               if( val.match(/\.(jpe?g|png|gif)$/) ) {
                   var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
-                  $('#' + era_name[i] + '-img').append("<figure class=\"items\"><img src='" + val +"'><p>"+ name +"</p></figure>" );
+                  $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><img src='" + val +"' onmouseover=\"zoom(this)\" onmouseout=\"unzoom(this)\"><p>"+ name +"</p></figure>" );
               }
           });
       }
@@ -57,26 +52,38 @@ for(let i in era_name) {
        //console.log(typeof data);
   }, 'text');
 }
+var allRow = document.getElementsByClassName("row");
+console.log(allRow);
+for(k = 0; k < allRow.length; k++)
+{
+  console.log(k);
+  allRow[k].setAttribute("onmouseover", "highlight(this)");
+  allRow[k].setAttribute("onmouseout", "unhighlight(this)");
+}
+function highlight(x){
+  x.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+function unhighlight(x){
+  x.style.backgroundColor = "rgba(0,0,0,0)";
+}
+var slideIndex = new Array();
+for(let i in era_name)
+{
+  slideIndex.push(1);
+}
 
-window.onload = function() {
-  elem = document.getElementById("wrapper");
-  $("#timeline2").empty();
-  TimeKnots.draw("#timeline2", mySchedule, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:100  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
-
-  // slider
-  var len = document.getElementsByClassName('slideshow-container').length;
-  for(var j = 0; j < len ; j++)
-    showSlides(j, slideIndex[j]);
-};
-$(window).resize(function() {
-  elem = document.getElementById("wrapper");
-  $("#timeline2").empty();
-  TimeKnots.draw("#timeline2", mySchedule, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:100  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
-});
 
 var upbutton = document.getElementById("up-button");
-var downbutton = document.getElementById("down-button")
-
+var downbutton = document.getElementById("down-button");
+$("#down-button img").attr("onmouseover", "onHover(this)").attr("onmouseout","unHover(this)");
+function onHover(x){
+  x.classList.add("animate__animated");
+  x.classList.add("animate__bounce");
+  x.classList.add("animate__infinite");
+}
+function unHover(x){
+  x.classList.remove("animate__bounce");
+}
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -97,7 +104,16 @@ function topFunction(){
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
-
+function zoom(x){
+  x.style.maxWidth = "120%";
+  x.style.maxHeight = "120%";
+  x.style.zIndex = "99";
+}
+function unzoom(x){
+  x.style.maxWidth = "100%";
+  x.style.maxHeight = "calc(100% - 20px)";
+  x.style.zIndex = "0";
+}
 
 
 $('[lang]').hide(); // hide all lang attributes on start.
@@ -143,6 +159,27 @@ function showSlides(a, n) {
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
+  console.log(a);
+  console.log(slides[slideIndex[a]-1]);
   slides[slideIndex[a]-1].style.display = "block";
   dots[slideIndex[a]-1].className += " active";
 }
+$(window).resize(function() {
+  elem = document.getElementById("wrapper");
+  $("#timeline2").empty();
+  TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
+});
+
+$(document).ready(function(){
+    $(window).on('load',function() {
+    elem = document.getElementById("wrapper");
+    $("#timeline2").empty();
+
+
+    // slider
+    var len = document.getElementsByClassName('slideshow-container').length;
+    for(var j = 0; j < len ; j++)
+      showSlides(j, slideIndex[j]);
+    TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
+  });
+});

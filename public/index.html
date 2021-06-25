@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- To edit the content of this web page, go to /public/content folder and change the
+html data inside the text files -->
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
@@ -7,6 +9,10 @@
   <script src="./src/timeknots.js" type="application/javascript"></script>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <title> Herione of France </title>
   <link href="style.css" rel="stylesheet">
 </head>
@@ -29,8 +35,9 @@
         <h1 class="title" lang="fr">Grande femelle en France</h1>
         <h2 class="description" lang="en">Timeline that show great female history</h2>
         <h2 class="description" lang="fr">Chronologie qui montre une grande histoire féminine</h2>
+        <a href="#Prehistorical">THis is test</a>
       </div>
-      <button onclick="scrollDown()" id="down-button" >
+      <button onclick="scrollDown()" id="down-button">
         <img src="./img/down.png" />
       </button>
     </div>
@@ -46,7 +53,7 @@
         <!-- odd row template -->
         <div class="row row-1" >
           <section >
-            <div class="details">
+            <div class="details" id='Prehistorical-head'>
               <span class="title" lang="en">Prehistorical Era(test)</span>
               <span class="title" lang="fr">Préhistorique</span>
               <span></span>
@@ -74,7 +81,7 @@
 
           </div>
           <section>
-            <div class="details">
+            <div class="details" id='Antiquity-head'>
               <span class="title" lang="en">Antiquity</span>
               <span class="title" lang="fr">Antiquité</span>
               <span>~1AD</span>
@@ -96,7 +103,7 @@
 
         <div class="row row-1">
           <section>
-            <div class="details">
+            <div class="details" id='Middle-Age-head'>
               <span class="title" lang="en">Middle-Age</span>
               <span class="title" lang="fr">Moyen-Âge</span>
               <span>~5th Century</span>
@@ -123,10 +130,10 @@
 
           </div>
           <section>
-            <div class="details">
+            <div class="details" id='Renaissance-head'>
               <span class="title" lang="en">Renaissance</span>
               <span class="title" lang="fr">Renaissance</span>
-              <span>1st Jan</span>
+              <span></span>
             </div>
             <div class="content slideshow-container" id='Renaissance'>
 
@@ -142,10 +149,10 @@
 
         <div class="row row-1">
           <section>
-            <div class="details">
+            <div class="details" id='French-Revolution-head'>
               <span class="title" lang="en">French Revolution</span>
               <span class="title" lang="fr">Révolution française</span>
-              <span>1st Jan</span>
+              <span></span>
             </div>
             <div class="content slideshow-container" id='French-Revolution'>
 
@@ -167,7 +174,7 @@
 
           </div>
           <section>
-            <div class="details">
+            <div class="details" id='Modern19th-head'>
               <span class="title" lang="en">Modern Period</span>
               <span class="title" lang="fr">Période Moderne</span>
               <span>19th Century</span>
@@ -186,7 +193,7 @@
 
         <div class="row row-1">
           <section>
-            <div class="details">
+            <div class="details" id='Modern20th-head'>
               <span class="title" lang="en">Modern Period</span>
               <span class="title" lang="fr">Période Moderne</span>
               <span>20th Century</span>
@@ -211,7 +218,7 @@
 
           </div>
           <section>
-            <div class="details">
+            <div class="details" id='Contemporian-head'>
               <span class="title" lang="en">Contemporary</span>
               <span class="title" lang="fr">Contemporian</span>
               <span>21st Century</span>
