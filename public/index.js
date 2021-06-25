@@ -23,7 +23,7 @@ var era_name= [
 ];
 for(let i in era_name) {
   var path = './content/'+ era_name[i]+'.txt';
-  var folder = "img/" + (parseInt(i)+1) + era_name[i] + '/';
+  var folder = "./img/" + (parseInt(i)+1) + era_name[i] + '/';
 
   $.ajax({
       url : folder,
