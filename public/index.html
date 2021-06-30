@@ -18,7 +18,7 @@ html data inside the text files -->
 </head>
 <body>
   <!-- title section -->
-  <div class="bg-head" >
+  <div class="bg-head" onmouseover="spring(this)" onmouseout="unspring(this)">
     <div class="head">
       <form class="lang-switch">
           <label for="lang-switch">
@@ -35,13 +35,15 @@ html data inside the text files -->
         <h1 class="title" lang="fr">Grande femelle en France</h1>
         <h2 class="description" lang="en">Timeline that show great female history</h2>
         <h2 class="description" lang="fr">Chronologie qui montre une grande histoire féminine</h2>
-        <a href="#Prehistorical">THis is test</a>
       </div>
       <button onclick="scrollDown()" id="down-button">
         <img src="./img/down.png" />
       </button>
+
     </div>
+
   </div>
+
   <!-- End of title section -->
 
 
@@ -70,7 +72,7 @@ html data inside the text files -->
           </section>
           <!-- image container -->
           <div class="img-container" id="Prehistorical-img">
-            
+
           </div>
         </div>
         <!-- end of odd row template -->

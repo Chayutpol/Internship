@@ -33,11 +33,11 @@ var fileNames = [
   //French-Revolution
   ['Anne Théroigne de Méricourt.jpg', 'Déclaration des droits de la femme, extrait.jpg', 'Femmes à cheval allant à versailles.jpg', 'Louise de Kéralio.jpg', 'Olympe de Gouge.jpg'],
   //Modern19th
-  [''],
+  [],
   //Modern20th
-  [''],
+  [],
   //Contemporian
-  ['']
+  []
 
 ];
 for(let i in era_name) {
@@ -63,7 +63,7 @@ for(let i in era_name) {
        $('#' + era_name[i] + ' a.next').attr("onclick", "plusSlides(" + i + ", 1)");
        for(let j = 0 ; j < $('#' + era_name[i] + " .mySlides").length; j++){
          $('#' + era_name[i] + '-dot').append(
-           "<span class=\"dot\" onclick=\"currentSlide(" + i + ',' + j +")\"></span>"
+           "<span class=\"dot\" onclick=\"currentSlide(" + i + ',' + (parseInt(j)+1) +")\"></span>"
          );
        }
        $('[lang]').hide(); // hide all lang attributes on start.
@@ -109,6 +109,12 @@ function onHover(x){
 function unHover(x){
   x.classList.remove("animate__bounce");
 }
+function spring(x){
+  x.classList.add("spring");
+}
+function unspring(x){
+  x.classList.remove("spring");
+}
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
@@ -142,7 +148,8 @@ function unzoom(x){
 
 elem = document.getElementById("wrapper");
 $("#timeline2").empty();
-TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
+TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
+
 $('[lang]').hide(); // hide all lang attributes on start.
 $('[lang="en"]').show(); // show just Korean text (you can change it)
 $('#lang-switch').change(function () { // put onchange event when user select option from select
@@ -188,10 +195,22 @@ function showSlides(a, n) {
   slides[slideIndex[a]-1].style.display = "block";
   dots[slideIndex[a]-1].className += " active";
 }
+
+const resize_ob = new ResizeObserver(function(entries) {
+	// since we are observing only a single element, so we access the first element in entries array
+	let rect = entries[0].contentRect;
+  elem = document.getElementById("wrapper");
+  $("#timeline2").empty();
+  TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
+});
+
+// start observing for resize
+resize_ob.observe(document.querySelector("#wrapper"));
+
 $(window).resize(function() {
   elem = document.getElementById("wrapper");
   $("#timeline2").empty();
-  TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
+  TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
 });
 
 $(document).ready(function(){
@@ -204,6 +223,7 @@ $(document).ready(function(){
     var len = document.getElementsByClassName('slideshow-container').length;
     for(var j = 0; j < len ; j++)
       showSlides(j, slideIndex[j]);
-    TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight , showLabels: false, labelFormat:"%Y", radius: 15});
+    TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
+    $(".row").css("position", "static");
   });
 });

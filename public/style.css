@@ -6,6 +6,7 @@
   font-family: "Poppins", sans-serif;
 }
 html {
+
   scroll-behavior: smooth;
 }
 body {
@@ -62,6 +63,8 @@ option{
   background-image: url('./img/head-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  position: center;
+  align-self: center;
 }
 .head{
   color: white;
@@ -150,9 +153,11 @@ h2.description{
   max-width: 100vw;
   margin: 0 auto;
   height: 100%;
+  padding: 20px 0;
 }
 
 .wrapper .row{
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 60px;
@@ -160,7 +165,9 @@ h2.description{
   margin: auto;
   padding: 2em 4em;
   width: 100%;
-  border-radius: 30px;  
+  border-radius: 15px;
+  overflow: hidden;
+
 }
 
 .wrapper .row-1{
@@ -183,6 +190,7 @@ h2.description{
   padding: 2em;
   position: relative;
   height: min-content;
+  max-height: 100%;
 }
 .row section .details{
   display: flex;
@@ -221,7 +229,7 @@ h2.description{
 .ifr-container {
   position: relative;
   overflow: hidden;
-  width: 100%;
+  padding-left: 20px;
   padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 }
 
@@ -234,7 +242,6 @@ h2.description{
   right: 0;
   width: 100%;
   height: 100%;
-
 }
 
 
@@ -250,7 +257,7 @@ h2.description{
 /* Hide the images by default */
 .mySlides {
   display: none;
-  margin: 0 1.8em 1em 1.8em;
+  margin: 0 30px 1em 30px;
 }
 /* Slide header */
 .mySlides h5{
@@ -339,6 +346,24 @@ h2.description{
   to {opacity: 1}
 }
 
+.spring{
+  -webkit-animation-name: spring;
+  -webkit-animation-duration: 3s;
+  animation-name: spring;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+@-webkit-keyframes spring{
+  0% {width: 100%;}
+  50% {width: 101%;}
+  100%{width: 100%;}
+}
+@keyframes spring{
+  0% {width: 100%;}
+  50% {width: 101%;}
+  100%{width: 100%;}
+}
+
 /* for responsive size of the screen */
 @media(max-width: 772px)
 {
@@ -350,9 +375,8 @@ h2.description{
   }
   .wrapper .row{
     display: flex;
-    margin: 0 0 0.25em 0;
-    padding-left: 8em;
-    padding-right: 4em;
+    margin: 0 4em 0.25em 7em;
+    width: calc(100% - 10em)
   }
   .wrapper .row section{
     width: 100%;
