@@ -43,7 +43,7 @@ var TimeKnots = {
     .style("position", "absolute")
     .style("font-family", "Helvetica Neue")
     .style("font-weight", "300")
-    .style("background","rgba(2,184,212,0.9)")
+    .style("background","rgba(101,74,62,0.8)")
     .style("color", "white")
     .style("padding", "5px 10px 5px 10px")
     .style("-moz-border-radius", "8px 8px")

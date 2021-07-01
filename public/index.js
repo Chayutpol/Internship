@@ -40,6 +40,10 @@ var fileNames = [
   []
 
 ];
+var timelineColor = "#654A3E";
+var timelineBackground = "rgba(149,122,110)";
+
+
 for(let i in era_name) {
   var path = './content/'+ era_name[i]+'.txt';
   var folder = "./img/" + (parseInt(i)+1) + era_name[i] + '/';
@@ -57,8 +61,8 @@ for(let i in era_name) {
   // });
   $.get(path, function(data) {
        $('#' + era_name[i]).append(data);
-       $('#' + era_name[i]).append("<a class=\"prev\" >&#10094;</a>");
-       $('#' + era_name[i]).append("<a class=\"next\" >&#10095;</a>");
+       $('#' + era_name[i]).append("<a class=\"prev\" ><div>&#10094;</div></a>");
+       $('#' + era_name[i]).append("<a class=\"next\" ><div>&#10095;</div></a>");
        $('#' + era_name[i] + ' a.prev').attr("onclick", "plusSlides(" + i + ", -1)");
        $('#' + era_name[i] + ' a.next').attr("onclick", "plusSlides(" + i + ", 1)");
        for(let j = 0 ; j < $('#' + era_name[i] + " .mySlides").length; j++){
@@ -76,7 +80,7 @@ for(let i in era_name) {
     var val = folder+fileNames[i][j];
     console.log(val);
     var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
-    $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><img src='" + val +"' onmouseover=\"zoom(this)\" onmouseout=\"unzoom(this)\"><p>"+ name +"</p></figure>" );
+    $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><img src='" + val +"' onmouseover=\"zoom(this)\" onmouseout=\"unzoom(this)\" title=\"" + name +"\"><p>"+ name +"</p></figure>" );
   }
 }
 var allRow = document.getElementsByClassName("row");
@@ -86,7 +90,7 @@ for(k = 0; k < allRow.length; k++)
   allRow[k].setAttribute("onmouseout", "unhighlight(this)");
 }
 function highlight(x){
-  x.style.backgroundColor = "rgba(0,0,0,0.4)";
+  x.style.backgroundColor = "rgba(0,0,0,0.3)";
 }
 function unhighlight(x){
   x.style.backgroundColor = "rgba(0,0,0,0)";
@@ -148,7 +152,7 @@ function unzoom(x){
 
 elem = document.getElementById("wrapper");
 $("#timeline2").empty();
-TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
+TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: timelineColor, background: timelineBackground, width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
 
 $('[lang]').hide(); // hide all lang attributes on start.
 $('[lang="en"]').show(); // show just Korean text (you can change it)
@@ -201,7 +205,7 @@ const resize_ob = new ResizeObserver(function(entries) {
 	let rect = entries[0].contentRect;
   elem = document.getElementById("wrapper");
   $("#timeline2").empty();
-  TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
+  TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: timelineColor, background: timelineBackground, width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
 });
 
 // start observing for resize
@@ -210,7 +214,7 @@ resize_ob.observe(document.querySelector("#wrapper"));
 $(window).resize(function() {
   elem = document.getElementById("wrapper");
   $("#timeline2").empty();
-  TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
+  TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: timelineColor, background: timelineBackground, width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
 });
 
 $(document).ready(function(){
@@ -223,7 +227,7 @@ $(document).ready(function(){
     var len = document.getElementsByClassName('slideshow-container').length;
     for(var j = 0; j < len ; j++)
       showSlides(j, slideIndex[j]);
-    TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: "#fff", background: "rgba(120,205,215)", width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
+    TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: timelineColor, background: timelineBackground, width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
     $(".row").css("position", "static");
   });
 });
