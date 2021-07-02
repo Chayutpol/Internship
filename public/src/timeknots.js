@@ -48,7 +48,8 @@ var TimeKnots = {
     .style("padding", "5px 10px 5px 10px")
     .style("-moz-border-radius", "8px 8px")
     .style("border-radius", "8px 8px")
-    .style("width", "300px")
+    .style("min-width", "200px")
+    .style("max-width", "300px")
     var svg = d3.select(id).append('svg').attr("width", cfg.width).attr("height", cfg.height).attr("id", "svg-time");
     //Calculate times in terms of timestamps
     if(!cfg.dateDimension){

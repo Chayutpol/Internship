@@ -121,38 +121,56 @@ h2.description{
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(100px, calc(100%));
-  grid-gap: 25px;
+  grid-auto-rows: minmax(100px, 195px);
+  grid-gap: 5px;
   position: relative;
   max-height: 400px;
 
 }
 .img-container img{
   max-width: 100%;
-  max-height: calc(100% - 20px);
-  margin: 0 auto;
-  transform: translateX(0);
+  max-height: 195px;
+  margin: 0 0;
+  float: left;
+}
+
+.img-container .items span{
+  display: table;
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  padding-bottom: 0;
+  margin: auto;
+
 }
 .img-container .items{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  text-align: initial;
+  text-align: center;
+  max-width: 100%;
   max-height: 100%;
 }
 /* .img-container iframe{
   width: calc(200%);
   margin: 0 auto;
 } */
-.img-container .items p{
+.img-container .items .image-caption{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   text-align: center;
-  color: white;
-  font-size: 1em;
-  font-weight: 600;
-  background-color: rgba(120, 120, 120, 0.5);
-  max-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(32,32,32,0.6);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2em;
+  opacity: 0;
 
+}
+.img-container .items p:hover{
+  opacity: 1;
 }
 /* -----------content----------- */
 .wrapper{
@@ -179,12 +197,7 @@ h2.description{
 .wrapper .row:hover{
   background-color: rgba(0,0,0,0.3);
 }
-.wrapper .row-1{
-  justify-content: space-between;
-}
-.wrapper .row-2{
-  justify-content: space-between;
-}
+
 .center-line{
   margin: 0;
   padding: 0;
@@ -395,13 +408,22 @@ h2.description{
   }
   .wrapper .row{
     display: flex;
+    flex-direction: column;
     margin: 0 4em 0.25em 7em;
     width: calc(100% - 10em)
+  }
+  .wrapper .row.row-1{
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper .row.row-2{
+    display: flex;
+    flex-direction: column-reverse;
   }
   .wrapper .row section{
     width: 100%;
   }
-  .bg-cover .img-container{
+  .img-container.collapse-content{
     display: none;
   }
   #up-button img{

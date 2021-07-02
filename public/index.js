@@ -8,7 +8,7 @@ var timeline = [
   {"value":	1800, "name":"Modern 19th Century", "link": "Modern19th-head"},
   {"value":	1900, "name":"Modern 20th Century", "link": "Modern20th-head"},
   {"value":	2000,"name":"Contemporian", "link": "Contemporian-head"},
-  {"value": 2100, "name":"", "link": "#"}
+  {"value": 2100, "name":"", "link": "header"}
 ];
 var elem = document.getElementById("wrapper");
 var era_name= [
@@ -40,9 +40,16 @@ var fileNames = [
   []
 
 ];
-var timelineColor = "#654A3E";
-var timelineBackground = "rgba(149,122,110)";
-
+var timelineColor = "rgba(200,180,170)";
+var timelineBackground = "#654A3E";
+if(window.innerWidth < 772)
+{
+  var galleries = document.getElementsByClassName("img-container");
+  for(var i = 0; i < galleries.length ; i++)
+  {
+    galleries[i].classList.add("collapse-content")
+  }
+}
 
 for(let i in era_name) {
   var path = './content/'+ era_name[i]+'.txt';
@@ -80,7 +87,7 @@ for(let i in era_name) {
     var val = folder+fileNames[i][j];
     console.log(val);
     var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
-    $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><img src='" + val +"' onmouseover=\"zoom(this)\" onmouseout=\"unzoom(this)\" title=\"" + name +"\"><p>"+ name +"</p></figure>" );
+    $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><span><img src='" + val +"' title=\"" + name +"\"><p class=\"image-caption\">"+ name +"</p></span></figure>" );
   }
 }
 var allRow = document.getElementsByClassName("row");
@@ -138,16 +145,6 @@ function scrollDown(){
 function topFunction(){
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
-}
-function zoom(x){
-  x.style.maxWidth = "120%";
-  x.style.maxHeight = "120%";
-  x.style.zIndex = "99";
-}
-function unzoom(x){
-  x.style.maxWidth = "100%";
-  x.style.maxHeight = "calc(100% - 20px)";
-  x.style.zIndex = "0";
 }
 
 elem = document.getElementById("wrapper");
@@ -215,6 +212,14 @@ $(window).resize(function() {
   elem = document.getElementById("wrapper");
   $("#timeline2").empty();
   TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: timelineColor, background: timelineBackground, width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
+  if(window.innerWidth < 772)
+  {
+    var galleries = document.getElementsByClassName("img-container");
+    for(var i = 0; i < galleries.length ; i++)
+    {
+      galleries[i].classList.add("collapsible")
+    }
+  }
 });
 
 $(document).ready(function(){
