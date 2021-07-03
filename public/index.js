@@ -21,6 +21,7 @@ var era_name= [
   'Modern20th',
   'Contemporian'
 ];
+//add the filename for the image here
 var fileNames = [
   // Prehistorical
   ['mères et chasseuses et cheffes.jpg', 'Prehistoric.jpg'],
@@ -54,18 +55,7 @@ if(window.innerWidth < 772)
 for(let i in era_name) {
   var path = './content/'+ era_name[i]+'.txt';
   var folder = "./img/" + (parseInt(i)+1) + era_name[i] + '/';
-
-  // $.ajax({
-  //     url : folder,
-  //     success: function (data) {
-  //         $(data).find("a").attr("href", function (j, val) {
-  //             if( val.match(/\.(jpe?g|png|gif)$/) ) {
-  //                 var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
-  //                 $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><img src='" + val +"' onmouseover=\"zoom(this)\" onmouseout=\"unzoom(this)\"><p>"+ name +"</p></figure>" );
-  //             }
-  //         });
-  //     }
-  // });
+  // get the content from the specify path
   $.get(path, function(data) {
        $('#' + era_name[i]).append(data);
        $('#' + era_name[i]).append("<a class=\"prev\" ><div>&#10094;</div></a>");
@@ -196,6 +186,37 @@ function showSlides(a, n) {
   slides[slideIndex[a]-1].style.display = "block";
   dots[slideIndex[a]-1].className += " active";
 }
+for(i = 0; i < era_name.length; i++)
+{
+  var newButton = document.createElement("button");
+  newButton.textContent = "Show gallery";
+  newButton.classList.add("collapsible");
+  newButton.type = "button";
+  var gallery = document.getElementById(era_name[i] + "-img");
+  console.log(gallery.childNodes.length);
+  if(gallery.childNodes.length == 1){
+    continue;
+  }
+
+  var parent = gallery.parentNode;
+  parent.insertBefore(newButton, gallery);
+}
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight  === "400px") {
+      // content.style.display = "none";
+      content.style.maxHeight = "0";
+    } else {
+      // content.style.display = "grid";
+      content.style.maxHeight = "400px";
+    }
+  });
+}
 
 const resize_ob = new ResizeObserver(function(entries) {
 	// since we are observing only a single element, so we access the first element in entries array
@@ -212,12 +233,22 @@ $(window).resize(function() {
   elem = document.getElementById("wrapper");
   $("#timeline2").empty();
   TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: timelineColor, background: timelineBackground, width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
-  if(window.innerWidth < 772)
+  if(window.innerWidth <= 772)
   {
     var galleries = document.getElementsByClassName("img-container");
     for(var i = 0; i < galleries.length ; i++)
     {
-      galleries[i].classList.add("collapsible")
+      galleries[i].style.maxHeight = "0px";
+      galleries[i].classList.add("collapse-content")
+    }
+  }
+  if(window.innerWidth > 772)
+  {
+    var galleries = document.getElementsByClassName("img-container");
+    for(var i = 0; i < galleries.length ; i++)
+    {
+      galleries[i].style.maxHeight = "400px";
+      galleries[i].classList.remove("collapse-content")
     }
   }
 });
