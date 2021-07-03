@@ -30,7 +30,7 @@ var fileNames = [
   //Middle-Age
   ['Aliénor d’aquitaine.jpg', 'Christine-de-Pisan.jpg', 'Femmes-chevaleresses.jpg', 'Modern-age.jpg'],
   //Renaissance
-  ['Artemesia Gentilesche.jpg', 'Catherine de medicis.jpg', 'Emilie du châtelet.jpg', 'Louise Depinay.jpg', 'Maria-Anna Mozart.jpg', 'Reine Margot.jpg'],
+  ['Artemesia Gentilesche.jpg', 'Catherine de medicis.jpg', 'Emilie du châtelet.jpg', 'Louise Depinay.jpg', 'Maria-Anna Mozart.jpg', 'Reine Margot.jpg', 'arrow.png','arrow.png'],
   //French-Revolution
   ['Anne Théroigne de Méricourt.jpg', 'Déclaration des droits de la femme, extrait.jpg', 'Femmes à cheval allant à versailles.jpg', 'Louise de Kéralio.jpg', 'Olympe de Gouge.jpg'],
   //Modern19th
@@ -185,6 +185,7 @@ function showSlides(a, n) {
   }
   slides[slideIndex[a]-1].style.display = "block";
   dots[slideIndex[a]-1].className += " active";
+
 }
 for(i = 0; i < era_name.length; i++)
 {
@@ -208,12 +209,10 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.maxHeight  === "400px") {
-      // content.style.display = "none";
-      content.style.maxHeight = "0";
+    if (content.classList.contains('active')) {
+      content.classList.remove('active')
     } else {
-      // content.style.display = "grid";
-      content.style.maxHeight = "400px";
+      content.classList.add('active')
     }
   });
 }
@@ -238,7 +237,6 @@ $(window).resize(function() {
     var galleries = document.getElementsByClassName("img-container");
     for(var i = 0; i < galleries.length ; i++)
     {
-      galleries[i].style.maxHeight = "0px";
       galleries[i].classList.add("collapse-content")
     }
   }
@@ -247,7 +245,6 @@ $(window).resize(function() {
     var galleries = document.getElementsByClassName("img-container");
     for(var i = 0; i < galleries.length ; i++)
     {
-      galleries[i].style.maxHeight = "400px";
       galleries[i].classList.remove("collapse-content")
     }
   }

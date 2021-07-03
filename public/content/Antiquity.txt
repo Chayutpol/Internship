@@ -16,7 +16,7 @@
   <h5 lang="fr"  >France3</h5>
   <p lang="fr">This is where the paragraph start and continue on until the paragraph end</p>
 </div>
-<div class="mySlides fade">
+<div class="mySlides extend-down">
   <div class="ifr-container">
     <iframe class="resp-iframe" src="https://www.youtube.com/embed/DV_edg69lRU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
   </div>

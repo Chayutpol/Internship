@@ -122,15 +122,37 @@ h2.description{
   display: none;
 }
 .bg-cover .img-container{
+  padding-right: 4px;
   margin: 20px 0;
   width: calc(50% - 30px);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(100px, 195px);
+  grid-auto-rows: auto;
   grid-gap: 5px;
   position: relative;
   max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.bg-cover .img-container::-webkit-scrollbar {
+  width: 4px;
+}
 
+/* Track */
+.bg-cover .img-container::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0);
+  border-radius: 7px;
+}
+
+/* Handle */
+.bg-cover .img-container::-webkit-scrollbar-thumb {
+  background: rgba(200,200,200, 0.5);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.bg-cover .img-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(222,222,222, 0.6);
 }
 .img-container img{
   max-width: 100%;
@@ -144,6 +166,7 @@ h2.description{
   position: relative;
   max-width: 100%;
   max-height: 100%;
+  height: min-content;
   padding-bottom: 0;
   margin: auto;
 
@@ -151,7 +174,7 @@ h2.description{
 .img-container .items{
   text-align: center;
   max-width: 100%;
-  max-height: 100%;
+  height: min-content;
 }
 /* .img-container iframe{
   width: calc(200%);
@@ -220,6 +243,7 @@ h2.description{
   position: relative;
   height: min-content;
   max-height: 100%;
+
 }
 .row section .details{
   display: flex;
@@ -258,7 +282,6 @@ h2.description{
 .ifr-container {
   position: relative;
   overflow: hidden;
-  padding-left: 20px;
   padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 }
 
@@ -269,18 +292,21 @@ h2.description{
   left: 0;
   bottom: 0;
   right: 0;
+  margin: auto;
   width: 100%;
   height: 100%;
+
 }
 
 
 /* Slide show style */
 .slideshow-container {
-  min-height: 100px;
+  max-height: 400px;
   max-width: 1000px;
   position: relative;
   margin: auto;
   margin-top: 10px;
+
 }
 
 /* Hide the images by default */
@@ -364,7 +390,7 @@ h2.description{
   transition: background-color 0.6s ease;
 }
 
-.active, .dot:hover {
+.next.active,.prev.active,.dot.active, .dot:hover {
   background-color: #717171;
 }
 
@@ -385,7 +411,6 @@ h2.description{
   from {opacity: .4}
   to {opacity: 1}
 }
-
 .spring{
   -webkit-animation-name: spring;
   -webkit-animation-duration: 3s;
@@ -453,7 +478,7 @@ h2.description{
   .collapsible.active:after{
     content: '\2212';
   }
-  .active, .collapsible:hover {
+  .collapsible.active, .collapsible:hover {
     background-color: rgba(0,0,0,0.3);
   }
   .collapsible.active{
@@ -465,9 +490,11 @@ h2.description{
     margin: 0;
     max-height: 0;
     /* display: none; */
-    overflow: hidden;
     -webkit-transition: max-height 0.2s ease-out;
     transition: max-height 0.2s ease-out;
+  }
+  .img-container.collapse-content.active{
+    max-height: 400px;
   }
   #up-button img{
     width: 3em;
@@ -476,4 +503,9 @@ h2.description{
   #down-button{
     width: 90px;
   }
+  /* scrollbar reset */
+  .bg-cover .img-container::-webkit-scrollbar {
+    width: 3px;
+  }
+
 }
