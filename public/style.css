@@ -461,6 +461,7 @@ h2.description{
     transition: margin-bottom 0.2s;
   }
   .img-container.collapse-content{
+    width: 100%;
     margin: 0;
     max-height: 0;
     /* display: none; */
