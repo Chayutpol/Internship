@@ -77,7 +77,7 @@ for(let i in era_name) {
     var val = folder+fileNames[i][j];
     console.log(val);
     var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
-    $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><span><img src='" + val +"' title=\"" + name +"\"><p class=\"image-caption\">"+ name +"</p></span></figure>" );
+    $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><span><img src='" + val +"' title=\"" + name +"\" loading=\"lazy\"><p class=\"image-caption\">"+ name +"</p></span></figure>" );
   }
 }
 var allRow = document.getElementsByClassName("row");
