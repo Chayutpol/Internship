@@ -473,23 +473,6 @@ footer div{
   from {opacity: .4}
   to {opacity: 1}
 }
-.spring{
-  -webkit-animation-name: spring;
-  -webkit-animation-duration: 3s;
-  animation-name: spring;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-}
-@-webkit-keyframes spring{
-  0% {width: 100%;}
-  50% {width: 101%;}
-  100%{width: 100%;}
-}
-@keyframes spring{
-  0% {width: 100%;}
-  50% {width: 101%;}
-  100%{width: 100%;}
-}
 
 /* for responsive size of the screen */
 @media(max-width: 772px)
