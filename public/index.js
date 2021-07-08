@@ -51,8 +51,9 @@ if(window.innerWidth < 772)
     galleries[i].classList.add("collapse-content")
   }
 }
-
-for(let i in era_name) {
+var navbar = document.getElementById('nav-bar');
+navbar.style.display = "none";
+for(let i = 0 ; i < era_name.length; i++) {
   var path = './content/'+ era_name[i]+'.txt';
   var folder = "./img/" + (parseInt(i)+1) + era_name[i] + '/';
   // get the content from the specify path
@@ -72,26 +73,23 @@ for(let i in era_name) {
        showSlides(i, slideIndex[i]);
        //console.log(typeof data);
   }, 'text');
+  let div = document.createElement("button");
+  let line = document.createElement("hr");
+
+  div.append(era_name[i]);
+  div.setAttribute('onclick',"TimeKnots.scroll(\"" + era_name[i] + "-head\")");
+  navbar.append(div);
+  if(i != era_name.length-1)
+    navbar.append(line);
+
   for(j in fileNames[i])
   {
     var val = folder+fileNames[i][j];
-    console.log(val);
     var name = decodeURIComponent(val.split('/').pop().split('.')[0]);
     $('#' + era_name[i] + '-img').append("<figure class=\"items\"  ><span><img src='" + val +"' title=\"" + name +"\" loading=\"lazy\"><p class=\"image-caption\">"+ name +"</p></span></figure>" );
   }
 }
-var allRow = document.getElementsByClassName("row");
-for(k = 0; k < allRow.length; k++)
-{
-  allRow[k].setAttribute("onmouseover", "highlight(this)");
-  allRow[k].setAttribute("onmouseout", "unhighlight(this)");
-}
-function highlight(x){
-  x.style.backgroundColor = "rgba(0,0,0,0.3)";
-}
-function unhighlight(x){
-  x.style.backgroundColor = "rgba(0,0,0,0)";
-}
+
 var slideIndex = new Array();
 for(let i in era_name)
 {
@@ -119,11 +117,13 @@ function unspring(x){
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > window.innerHeight || document.documentElement.scrollTop > window.innerHeight) {
     upbutton.style.display = "block";
+    navbar.style.display = "";
     downbutton.style.display = "none";
   } else {
     upbutton.style.display = "none";
+    navbar.style.display = "none";
     downbutton.style.display = "block";
   }
 }
@@ -194,7 +194,6 @@ for(i = 0; i < era_name.length; i++)
   newButton.classList.add("collapsible");
   newButton.type = "button";
   var gallery = document.getElementById(era_name[i] + "-img");
-  console.log(gallery.childNodes.length);
   if(gallery.childNodes.length == 1){
     continue;
   }
@@ -252,6 +251,7 @@ $(window).resize(function() {
 
 $(document).ready(function(){
     $(window).on('load',function() {
+
     elem = document.getElementById("wrapper");
     $("#timeline2").empty();
 
