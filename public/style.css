@@ -508,6 +508,7 @@ footer div{
   }
   .wrapper{
     width: 100%;
+    max-width: 100%;
   }
   .wrapper .row{
     grid-gap: 0px;
