@@ -1,10 +1,4 @@
-$.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {
-  alert('Country: ' + data.address.country);
-  if(data.address.country == 'France')
-  {
-    $('#lang-switch').val('fr').change()
-  }
-});
+
 var timeline = [
   {"value": -1000, "name":"Prehistorical", "link": "Prehistorical-head" },
   {"value": 100, "name":"Ancient", "link": "Antiquity-head"},
@@ -214,6 +208,7 @@ function showSlides(a, n) {
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
+  if(typeof(slides[slideIndex[a]-1]) != 'undefined')
   slides[slideIndex[a]-1].style.display = "block";
   dots[slideIndex[a]-1].className += " active";
 
@@ -282,7 +277,14 @@ $(window).resize(function() {
 
 $(document).ready(function(){
     $(window).on('load',function() {
-
+    var language = window.navigator.userLanguage || window.navigator.language;
+    language = language.toLowerCase();
+    alert(language);
+    var fr = ['fr', 'fr-ca', 'fr-lu', 'fr-ch'];
+    if(fr.includes(language))
+    {
+      $('#lang-switch').val('fr').change();
+    }
     elem = document.getElementById("wrapper");
     $("#timeline2").empty();
 
@@ -290,7 +292,11 @@ $(document).ready(function(){
     // slider
     var len = document.getElementsByClassName('slideshow-container').length;
     for(var j = 0; j < len ; j++)
+    {
       showSlides(j, slideIndex[j]);
+      console.log(j);
+    }
+
     TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: false, color: timelineColor, background: timelineBackground, width:60  , height: elem.offsetHeight-40 , showLabels: false, labelFormat:"%Y", radius: 15});
     $(".row").css("position", "static");
   });
