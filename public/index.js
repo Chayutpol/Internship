@@ -208,10 +208,13 @@ function showSlides(a, n) {
   for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
   }
-  if(typeof(slides[slideIndex[a]-1]) != 'undefined')
-  slides[slideIndex[a]-1].style.display = "block";
-  dots[slideIndex[a]-1].className += " active";
-
+  if(typeof(slides[slideIndex[a]-1]) != 'undefined'){
+    slides[slideIndex[a]-1].style.display = "block";
+    dots[slideIndex[a]-1].className += " active";
+  }
+  else {
+    console.log(a);
+  }
 }
 for(i = 0; i < era_name.length; i++)
 {
