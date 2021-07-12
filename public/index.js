@@ -1,4 +1,10 @@
-
+$.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {
+  alert('Country: ' + data.address.country);
+  if(data.address.country == 'France')
+  {
+    $('#lang-switch').val('fr').change()
+  }
+});
 var timeline = [
   {"value": -1000, "name":"Prehistorical", "link": "Prehistorical-head" },
   {"value": 100, "name":"Ancient", "link": "Antiquity-head"},
@@ -78,6 +84,7 @@ for(let i = 0 ; i < era_name.length; i++) {
 
   div.append(era_name[i]);
   div.setAttribute('onclick',"TimeKnots.scroll(\"" + era_name[i] + "-head\")");
+  div.setAttribute('id',era_name[i]+'-nav');
   navbar.append(div);
   if(i != era_name.length-1)
     navbar.append(line);
@@ -126,7 +133,31 @@ function scrollFunction() {
     navbar.style.display = "none";
     downbutton.style.display = "block";
   }
+  var count = 1;
+  for(let i = 0; i < era_name.length; i++)
+  {
+    var elem = document.getElementById(era_name[i]+'-head');
+    if(isInViewport(elem) && count != 0)
+    {
+      document.getElementById(era_name[i]+'-nav').classList.add('active');
+      count = 0;
+    }
+    else
+    {
+      document.getElementById(era_name[i]+'-nav').classList.remove('active');
+    }
+  }
 }
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
 function scrollDown(){
   document.body.scrollTop = window.innerHeight;
   document.documentElement.scrollTop = window.innerHeight;
@@ -144,7 +175,7 @@ TimeKnots.draw("#timeline2", timeline, {dateDimension:false, horizontalLayout: f
 $('[lang]').hide(); // hide all lang attributes on start.
 $('[lang="en"]').show(); // show just Korean text (you can change it)
 $('#lang-switch').change(function () { // put onchange event when user select option from select
-    var lang = $(this).val(); // decide which language to display using switch case. The rest is obvious (i think)
+    var lang = $(this).val(); // decide which language to display using switch case.
     switch (lang) {
         case 'en':
             $('[lang]').hide();
