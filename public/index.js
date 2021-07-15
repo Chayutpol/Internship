@@ -280,6 +280,8 @@ $(window).resize(function() {
 
 $(document).ready(function(){
     $(window).on('load',function() {
+    //language recommendation
+    //ip-lookup (not used)
     fetch('https://extreme-ip-lookup.com/json/')
       .then( res => res.json())
       .then(response => {
@@ -288,9 +290,10 @@ $(document).ready(function(){
        .catch((data, status) => {
           console.log('Request failed');
        })
+
+    //Browser recommended language(using)
     var language = window.navigator.userLanguage || window.navigator.language;
     language = language.toLowerCase();
-    alert(language);
     var fr = ['fr', 'fr-ca', 'fr-lu', 'fr-ch'];
     if(fr.includes(language))
     {
