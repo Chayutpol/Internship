@@ -6,7 +6,6 @@
   font-family: "Poppins", sans-serif;
 }
 html {
-
   scroll-behavior: smooth;
 }
 body {
@@ -447,40 +446,19 @@ footer{
   padding: 2em 10em 2em 10em;
 
 }
-footer form .form-group {
-  display: grid;
-  grid-template-columns: minmax(80px, auto) 1fr;
-  max-width: 100vw;
-  margin: 5px 0;
-}
-footer form .form-group input,
-footer form .form-group textarea{
-  max-width: 100%;
-  font-size: 10px;
-  background-color: rgba(255,255,255,0.6);
-}
-footer form .form-group input{
-  height: min-content;
-}
-footer form .form-group textarea{
-  resize: vertical;
-}
-footer form .form-group input::-webkit-input-placeholder
-{ /* Chrome/Opera/Safari */
-  font-style: italic;
-  color: black;
-}
-footer form button{
-  border-radius: 5px;
-  background-color: rgba(80,60,50);
-  color: white;
-}
 
 footer a:link{
   color: white;
 }
 footer a:visited{
   color: #FFFF99;
+}
+footer div a.button{
+  border-radius: 5px;
+  background-color: rgba(80,60,50);
+  color: white;
+  padding: 2px;
+  text-decoration: none;
 }
 footer h5{
   font-size: 20px;
