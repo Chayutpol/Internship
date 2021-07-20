@@ -1,4 +1,33 @@
+$('document').ready(function () {
+    $('#google_translate_element').on("click", function () {
 
+        // Change font family and color
+        $("iframe").contents().find(".goog-te-menu2-item div, .goog-te-menu2-item:link div, .goog-te-menu2-item:visited div, .goog-te-menu2-item:active div, .goog-te-menu2 *")
+            .css({
+                'color': 'white',
+                'font-family': 'tahoma',
+                'background-color': 'rgba(0,0,0,0)'
+            });
+
+        // Change hover effects
+        $("iframe").contents().find(".goog-te-menu2-item div").hover(function () {
+            $(this).css('background-color', '#F38256').find('span.text').css('color', 'white');
+        }, function () {
+            $(this).css('background-color', 'rgba(0,0,0,0)').find('span.text').css('color', 'white');
+        });
+
+        // Change Google's default blue border
+        $("iframe").contents().find('.goog-te-menu2').css('border', '1px solid white').css('max-width', '100vw').css('background-color', 'rgba(0,0,0,0)').css('box-shadow', '#666 0 0 0 0');
+
+        // Change the iframe's box shadow
+        $(".goog-te-menu-frame").css({
+            '-moz-box-shadow': '0 0 0 0 #666',
+            '-webkit-box-shadow': '0 0 0 0 #666',
+            'box-shadow': '0 0 0 0 #666',
+            'max-width' : '100vw'
+        });
+    });
+});
 var timeline = [
   {"value": -1000, "name":"Prehistorical", "link": "Prehistorical-head" },
   {"value": 100, "name":"Ancient", "link": "Antiquity-head"},

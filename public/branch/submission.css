@@ -46,6 +46,7 @@ body {
 .form-group textarea{
   max-width: 100%;
   background-color: rgba(255,255,255,0.4);
+  border-radius: 3px;
 }
 .form-group input{
   height: min-content;

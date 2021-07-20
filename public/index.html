@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- To edit the content of this web page, go to /public/content folder and change the
 html data inside the text files -->
@@ -20,17 +21,24 @@ html data inside the text files -->
   <!-- title section -->
   <div id="header" class="bg-head" >
     <div class="head">
+      <div id="google_translate_element"></div>
+      <script type="text/javascript">// <![CDATA[
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      }
+      // ]]></script>
+      <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
       <form class="lang-switch">
           <label for="lang-switch">
-              <span lang="fr">Langue</span>
-              <span lang="en">Language</span>
+              <span lang="fr">langue du contenu d'origine</span>
+              <span lang="en">Original content language</span>
           </label>
           <select id="lang-switch">
               <option value="en" selected>English</option>
               <option value="fr">France</option>
           </select>
       </form>
-      <div class="content">
+      <div class="header-title">
         <h1 class="title" lang="en">Great female in France</h1>
         <h1 class="title" lang="fr">Grande femelle en France</h1>
         <h2 class="description" lang="en">Timeline that show great female history</h2>
@@ -256,12 +264,21 @@ html data inside the text files -->
 
       </div>
       <div>
-        <h5><i class="fa fa-book"></i>  Related link</h5>
-        <a href="#">hexica2000@gmail.com</a>
+        <h5 lang="en"><i class="fa fa-book" ></i>  Related link</h5>
+        <h5 lang="fr"><i class="fa fa-book" ></i>  Lien associé</h5>
+        <ul>
+          <li><a href="https://www.franceculture.fr/numerique/ada-lovelace-la-premiere-codeuse-de-lhistoire">Ada Lovelace, la première codeuse de l'histoire</a></li>
+          <li><a href="https://www.franceculture.fr/histoire/non-les-femmes-prehistoriques-ne-balayaient-pas-la-grotte">Non, les femmes préhistoriques ne balayaient pas la grotte</a></li>
+        </ul>
+
+
       </div>
       <div>
-        <h5><i class="fa fa-envelope"></i> Contract</h5>
-        <a class="button" href="./branch/submission.html">Submit your contract</a>
+        <h5 lang="en"><i class="fa fa-envelope" ></i> Contact</h5>
+        <h5 lang="fr"><i class="fa fa-envelope" ></i> Contact</h5>
+        <p lang="en">Questions and suggestions are always welcomed.</p>
+        <p lang="fr">Les questions et suggestions sont toujours les bienvenues.</p>
+        <a class="button" href="./branch/submission.html">Submit your suggestion</a>
       </div>
     </footer>
   </div>
